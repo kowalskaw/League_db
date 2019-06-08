@@ -1,0 +1,43 @@
+USE [League]
+GO
+
+/****** Object:  Table [dbo].[Violation]    Script Date: 08.06.2019 16:54:02 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[Violation](
+	[ViolationID] [smallint] NOT NULL,
+	[PlayerID] [smallint] NOT NULL,
+	[ViolationTime] [time](7) NOT NULL,
+	[VCard] [varchar](10) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ViolationID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[ViolationID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[Violation]  WITH CHECK ADD CHECK  (([PlayerID]>(0)))
+GO
+
+ALTER TABLE [dbo].[Violation]  WITH CHECK ADD CHECK  (([VCard]='Yellow' OR [VCard]='Red'))
+GO
+
+ALTER TABLE [dbo].[Violation]  WITH CHECK ADD CHECK  (([ViolationID]>(0)))
+GO
+
+

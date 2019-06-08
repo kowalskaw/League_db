@@ -1,0 +1,39 @@
+USE [League]
+GO
+
+/****** Object:  Table [dbo].[Season]    Script Date: 08.06.2019 16:52:39 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Season](
+	[SeasonID] [int] NOT NULL,
+	[StartDate] [date] NOT NULL,
+	[EndDate] [date] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[SeasonID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[SeasonID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[Season]  WITH CHECK ADD CHECK  (([StartDate]<[EndDate]))
+GO
+
+ALTER TABLE [dbo].[Season]  WITH CHECK ADD CHECK  (([EndDate]<getdate()))
+GO
+
+ALTER TABLE [dbo].[Season]  WITH CHECK ADD CHECK  (([SeasonID]>(0)))
+GO
+
+ALTER TABLE [dbo].[Season]  WITH CHECK ADD CHECK  (([StartDate]<getdate()))
+GO
+
+
