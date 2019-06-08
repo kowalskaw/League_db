@@ -4,7 +4,7 @@
 MS SQL relational database representing football league.
 
 ## Establishments
-- there is one league thath consists of teams (constant teams),
+- there is one league that consists of teams (constant teams),
 - in one season players are assigned to the same teams,
   in other seasons, assignment can be different,
 - every team plays 2 games (each with each):
